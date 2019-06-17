@@ -1,0 +1,12 @@
+
+button{
+  border-color: white;
+  margin-right: 3px;
+}
+
+a{
+  cursor: pointer;
+}
+a:hover{
+  color: green;
+}

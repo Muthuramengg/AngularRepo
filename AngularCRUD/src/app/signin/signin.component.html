@@ -1,0 +1,31 @@
+<form #signinForm="ngForm" (ngSubmit)="login(signinForm)">
+    <div class="input-field">
+        <input name="email" #email="ngModel" [(ngModel)]="Model.Email" type="text" required [pattern]="emailRegex"
+        [ngClass]="{'invalid-textbox': signinForm.submitted && !email.valid}">
+        <div *ngIf="signinForm.submitted && email.errors">
+          <label class="validationMsg" *ngIf="email?.errors.required">Email is mandatory</label>
+          <label class="validationMsg" *ngIf="email?.errors.pattern">Enter Valid Email Format</label>
+        </div>
+        <label for="signinEmail">
+          Email:
+          <label class="red-text">*</label>
+        </label>
+      </div>
+      <div class="input-field">
+          <input name="password" #password="ngModel" [(ngModel)]="Model.Password" type="password" required minlength="4"
+           [ngClass]="{'invalid-textbox': signinForm.submitted && !password.Valid}">
+          <div *ngIf="signinForm.submitted && password.errors">
+              <label class="validationMsg" *ngIf="password?.errors.required">Password is mandatory</label>
+              <label class="validationMsg" *ngIf="password?.errors.minlength">Enter Valid Password Length</label>
+            </div>
+          <label for="signinPassword">
+            Password:
+            <label class="red-text">*</label>
+          </label>
+        </div>
+        <button type="submit" class="btn waves-effect waves-light btns" justify-content-center>Login</button>
+</form>
+
+<div class="alert" *ngIf="serverErrMsg">
+  {{serverErrMsg}}
+</div>

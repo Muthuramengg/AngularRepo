@@ -1,0 +1,20 @@
+.loginback {
+    margin-top: 100px;
+}
+
+.alignCenter{
+  margin-top: 5px;
+  text-align: center;
+}
+h4{
+  display: inline-block;
+  margin: 10px;
+
+}
+.headerHover:hover{
+  border-bottom: 2px solid #5ba9fd !important;
+  cursor: pointer;
+}
+.active{
+  border-bottom: 2px solid #5ba9fd !important;
+}

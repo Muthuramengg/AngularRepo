@@ -1,0 +1,22 @@
+.btns {
+  background-color: #5ba9fd;
+  margin-left: 40%;
+  color: white;
+}
+.invalid-textbox{
+border-color: red !important;
+}
+
+.validationMsg{
+  color: red;
+}
+
+.success{
+  background-color: green;
+  color: white;
+}
+
+.alert{
+  background-color: red;
+  color: white;
+}

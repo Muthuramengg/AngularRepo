@@ -1,0 +1,45 @@
+<form #signupForm="ngForm" (ngSubmit)="onsubmit(signupForm)">
+    <div class="input-field">
+        <input name="fullname" #fullname="ngModel" [(ngModel)]="userService.selectUser.fullname" type="text" required [ngClass]="{'invalid-textbox' : signupForm.submitted && !fullname.valid}">
+        <div *ngIf="signupForm.submitted && !fullname.valid">
+          <label class="validationMsg">Fullname is mandatory</label>
+        </div>
+        <label for="fullname">
+          Full Name:
+          <label class="red-text">*</label>
+        </label>
+      </div>
+      <div class="input-field">
+        <input name="email" type="text" #email="ngModel" [(ngModel)]="userService.selectUser.email"
+        required [pattern]="emailRegex" [ngClass]="{'invalid-textbox': signupForm.submitted && !email.valid}">
+        <div *ngIf="signupForm.submitted && email.errors">
+            <label *ngIf="email?.errors.required" class="validationMsg">Email is mandatory</label>
+            <label *ngIf="email?.errors.pattern" class="validationMsg">Email is not valid</label>
+        </div>
+        <label for="email">
+          Email:
+          <label class="red-text">*</label>
+        </label>
+      </div>
+      <div class="input-field">
+          <input name="password" #password="ngModel" [(ngModel)]="userService.selectUser.password" type="password" required
+          minlength="4" [ngClass]="{'invalid-textbox': signupForm.submitted && !password.valid}">
+          <div *ngIf="signupForm.submitted && password.errors">
+            <label *ngIf="password?.errors.required" class="validationMsg">Password is mandatory</label>
+            <label *ngIf="password?.errors.minlength" class="validationMsg">Password must contain minimum 4 character</label>
+          </div>
+          <label for="password">
+            Password:
+            <label class="red-text">*</label>
+          </label>
+        </div>
+      <button type="submit" class="btn waves-effect waves-light btns" justify-content-center> Register </button>
+</form><br>
+
+<div class="success" *ngIf="registeredSuccess">
+  Saved Successfully
+</div>
+
+<div class="alert" *ngIf="errorMessages">
+    {{errorMessages}}
+</div>
